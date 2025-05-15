@@ -16,7 +16,7 @@ RSS_FEEDS = {
 }
  
 @app.route('/')
-def index():
+def news():
     articles = []
     # (1-2)從多個RSS源中抓取文章並將它們存入articles列表
     # items()方法會返回字典中的每個鍵值對，source是RSS源的名稱，feed是RSS源的URL。
@@ -41,7 +41,7 @@ def index():
     # 使用整數除法//計算總頁數，並加1以確保即使文章數量不是整數倍，也能正確顯示總頁數
     total_pages=total_articles // per_page + 1
  
-    return render_template('index.html', 
+    return render_template('news.html', 
             articles=paginated_articles, page=page, total_pages=total_pages)
 
 @app.route('/search')
